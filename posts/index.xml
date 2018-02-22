@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Guillaume Aldebert&#39;s Blog</title>
+    <link>https://galdebert.github.io/posts/</link>
+    <description>Recent content in Posts on Guillaume Aldebert&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Guillaume Aldebert. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://galdebert.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Online and Offline Slides Using Markdown and Remark</title>
+      <link>https://galdebert.github.io/posts/remark-1/</link>
+      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://galdebert.github.io/posts/remark-1/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m a big fan of Markdown, it lets you focus on the content, not the style. Markdown (and other similar systems) is commonly used for blogs and documentation. What about slides? Let&amp;rsquo;s try &lt;a href=&#34;https://remarkjs.com&#34;&gt;remark&lt;/a&gt;, and see how we can create slides that work both &lt;strong&gt;online&lt;/strong&gt; and &lt;strong&gt;offline&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Blog Tutorial using markdown, Github and Hugo</title>
+      <link>https://galdebert.github.io/posts/hugo-1/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://galdebert.github.io/posts/hugo-1/</guid>
+      <description>&lt;p&gt;I wanted to start a blog about programming, keeping things very minimal, writing just markdown. I tried Hugo + Github pages, let&amp;rsquo;s go through the steps to get your markdown powered blog online.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

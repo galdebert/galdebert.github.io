@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.34" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Blog Tutorial using markdown, Github and Hugo &middot; Guillaume Aldebert&#39;s Blog</title>
+
+  
+  <link rel="stylesheet" href="https://galdebert.github.io/css/print.css" media="print">
+  <link rel="stylesheet" href="https://galdebert.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://galdebert.github.io/css/syntax.css">
+  <link rel="stylesheet" href="https://galdebert.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://galdebert.github.io/css/aspect-ratio.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+  
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Guillaume Aldebert&#39;s Blog" />
+</head>
+
+  <body class="theme-base-0c ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://galdebert.github.io/"><h1>Guillaume Aldebert&#39;s Blog</h1></a>
+      
+      
+    </div>
+    <a class="sidebar-nav" href="https://galdebert.github.io//posts">Posts</a>
+    <ul class="sidebar-nav-item">
+        <li><a href="/posts/hugo-1/"> Blog Tutorial using markdown, Github and Hugo</a></li><li><a href="/posts/remark-1/"> Online and Offline Slides Using Markdown and Remark</a></li>
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li>
+        <a href="https://github.com/galdebert">Github</a>
+        
+          <a href="https://github.com/galdebert"><i class="fa fa-github-square"></i></a>
+        
+      </li>
+      <div class="sidebar-nav-item">
+        
+      </div>
+    </ul>
+
+    <div class="sidebar-footer">
+      <p>Powered by <a href="http://gohugo.io/">Hugo</a> - 
+      &copy; 2018 Guillaume Aldebert. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>Blog Tutorial using markdown, Github and Hugo</h1>
+  <span class="post-date">Tue, Jan 23, 2018</span>
+  <p>I wanted to start a blog about programming, keeping things very minimal, writing just markdown. I tried Hugo + Github pages, let&rsquo;s go through the steps to get your markdown powered blog online.</p>
+
+<p></p>
+
+<p>Note that I don&rsquo;t know if Hugo + Github pages is better than any alternative. But I thought it was better to get something done instead of hesitating forever about the &ldquo;best&rdquo; solution.</p>
+
+<h1 id="create-your-github-repositories">Create your github repositories</h1>
+
+<p>One thing that was not super clear to me at first was whether the sources (markdown&hellip;) should live in the same repo as the generated pages (html&hellip;).
+Actually, not only there is no need mix sources and generated pages, but it&rsquo;s much simpler and cleaner to fully separate those. So let&rsquo;s have 2 repositories:</p>
+
+<p><strong>create a repo named <em>username</em>/github.io</strong></p>
+
+<ul>
+<li>You have to respect this name pattern</li>
+<li>This will contain the generated pages</li>
+<li>For me the repo is <a href="https://github.com/galdebert/galdebert.github.io">https://github.com/galdebert/galdebert.github.io</a></li>
+<li>Clone it in a local <em>username</em>/github.io folder (for me: galdebert.github.io)</li>
+<li>Look at <a href="https://pages.github.com/">https://pages.github.com/</a> for more details</li>
+</ul>
+
+<p><strong>create a repo named blog</strong></p>
+
+<ul>
+<li>You can use any other name you like</li>
+<li>This will contains the sources (markdown&hellip;) of your blog</li>
+<li>For me the repo is <a href="https://github.com/galdebert/blog">https://github.com/galdebert/blog</a></li>
+<li>Clone it in a local blog folder</li>
+</ul>
+
+<h1 id="install-hugo">Install Hugo</h1>
+
+<p>The <a href="https://gohugo.io/getting-started/installing/">install page</a> has everything you need. Here is a quick 2 steps install summary for windows:</p>
+
+<h2 id="1-install-chocolatey">1. Install chocolatey</h2>
+
+<p>I&rsquo;m mostly on windows these days, and installing hugo was the occasion to install chocolatey, (one of) the package manager for Windows. I have little experience with chocolatey, but this looks very good. From now on, I&rsquo;ll try using chocolatey as often as possible.</p>
+
+<p>You should read <a href="https://chocolatey.org/install">https://chocolatey.org/install</a>, one option that worked for me was to run the following command from a powershell (ran as administrator):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ps" data-lang="ps"><span style="color:#a6e22e">Set-ExecutionPolicy</span> <span style="color:#a6e22e">Bypass</span> <span style="color:#a6e22e">-Scope</span> <span style="color:#a6e22e">Process</span> <span style="color:#a6e22e">-Force;</span> <span style="color:#a6e22e">iex</span> <span style="color:#e6db74">((New-Object System.Net.WebClient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))</span></code></pre></div>
+<h2 id="2-install-hugo-with-chocolatey">2. Install hugo with chocolatey</h2>
+
+<p>In your terminal (ran as administrator):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">choco install hugo -confirm</code></pre></div>
+<p>The hugo <a href="https://gohugo.io/getting-started/installing/">install page</a> tells you to install Pygments, but the <a href="https://gohugo.io/content-management/syntax-highlighting/">hugo syntax highlighting page</a> says there is a built-in default syntax hightlighter named Chroma. Ok, good, let&rsquo;s not install Pygments then.</p>
+
+<h1 id="creating-your-blog-content">Creating your blog content</h1>
+
+<p>More details here: <a href="http://gohugo.io/getting-started/quick-start/">http://gohugo.io/getting-started/quick-start/</a></p>
+
+<h2 id="1-create-the-basic-directory-structure">1. Create the basic directory structure</h2>
+
+<p>In your blog directory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site . --force</code></pre></div>
+<p><code>--force</code> allows to write in the directory even if it&rsquo;s not empty (it already has the usual .git, README, LICENSE).</p>
+
+<h2 id="2-download-and-use-a-theme">2. Download and use a theme</h2>
+
+<p>In your blog directory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke</code></pre></div>
+<p>and add the following line to <code>config.toml</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;ananke&#34;</span></code></pre></div>
+<p>There are tons of other themes here: <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a></p>
+
+<h2 id="3-add-some-markdown">3. Add some markdown</h2>
+
+<p>In your blog directory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new posts/my-first-post.md</code></pre></div>
+<p>This creates the file: <code>./content/posts/my-first-post.md</code><br>
+You can also create the file manually, but <code>hugo new</code> adds a few lines at the start of the md file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+title: <span style="color:#e6db74">&#34;My First Post&#34;</span>
+date: <span style="color:#e6db74">2018-01-19T12:58:17</span>+<span style="color:#ae81ff">01</span>:<span style="color:#ae81ff">00</span>
+draft: <span style="color:#66d9ef">true</span>
+---</code></pre></div>
+<p>called &ldquo;front matter&rdquo;. This sets parameters to your markdown file that hugo and the current theme can read to generate html.</p>
+
+<h2 id="4-generate-the-html-and-serve-it-locally">4. Generate the html and serve it locally</h2>
+
+<p>In your blog directory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server -D</code></pre></div>
+<p><code>-D</code> means: include content marked as draft</p>
+
+<p>View the locally generated html in your browser at <code>http://localhost:1313/</code></p>
+
+<p>Now the html is automatically generated everytime the content is changed. So you can see your changes in realtime, everytime the markdown files are saved to disk.</p>
+
+<p>A couple of interesting notes about <code>hugo server</code>:</p>
+
+<ul>
+<li>It writes generated pages in memory, so you won&rsquo;t find any generated pages on your disk</li>
+<li>It injects JavaScript into the generated pages that allow the LiveReload thing</li>
+</ul>
+
+<h2 id="5-modify-themes">5. Modify Themes</h2>
+
+<p>The hugo doc tells you that you should customize a theme by creating files in your blog folder. So <code>blog/themes/hyde/static/css/hyde.css</code> is overriden by your manually created <code>blog/static/css/hyde.css</code> file. The idea is that you don&rsquo;t modify the original theme and instead you only apply minimal changes.</p>
+
+<p>But this seems a bit awkward to me:</p>
+
+<ul>
+<li>How does the overriding mechanism work? Is the granularity per file? If yes, this does not sound very &ldquo;minimal&rdquo; to me. If no, this sounds quite complicated.</li>
+<li>At least in these first discovery days, I want to be able to tweak theme1, tweak theme2, and change between those with one flag: <code>hugo server -D -t theme2</code>. Using theme specific files in the root folder makes this impossible (or very very awkward).</li>
+<li>To track changes, and merge stuff, we have git, let&rsquo;s use it.</li>
+</ul>
+
+<p>Let&rsquo;s use the hyde theme:</p>
+
+<ul>
+<li>fork <a href="https://github.com/spf13/hyde">https://github.com/spf13/hyde</a></li>
+<li>clone your fork: <code>git submodule add https://github.com/galdebert/hyde themes/galdebert-hyde</code></li>
+<li>in your <code>config.toml</code> set <code>theme = &quot;galdebert-hyde&quot;</code></li>
+<li>Make your changes in <code>themes/galdebert-hyde</code>, commit/push them</li>
+</ul>
+
+<h1 id="publish-on-github-pages">Publish on github pages</h1>
+
+<p>First change <code>draft: true</code> to <code>draft: false</code> at the top of your markdown file.</p>
+
+<p>There are different options on <a href="http://gohugo.io/hosting-and-deployment/hosting-on-github/">this hugo doc page</a> (using /docs, gh-pages, master). But <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">this github help page</a> says: &ldquo;repository named <username>.github.io are only published from the master branch&rdquo;. So let&rsquo;s do that.</p>
+
+<p>In the config.toml, write the correct address of the online site, for me it&rsquo;s :<br>
+<code>baseURL = &quot;https://galdebert.github.io/&quot;</code><br>
+Be careful, the trailing / is mandatory. Without it, everything was fine locally, but the site was broken online 😤.</p>
+
+<p>Here are the steps to publish:</p>
+
+<ol>
+<li>call plain <code>hugo</code> (not <code>hugo server</code>)
+
+<ul>
+<li>with the destination folder explicitely <code>-d ../galdebert.github.io</code> (in my case)</li>
+<li>with <code>--cleanDestinationDir</code> that clears the destination folder first (this keeps the .git subfolder)</li>
+</ul></li>
+<li><code>git add</code>, <code>git commit</code>, <code>git push</code></li>
+</ol>
+
+<p>Here is a bash/cmd script that publishes, provided that <code>galdebert.github.io</code> and <code>blog</code> share the same parent dir:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo --cleanDestinationDir -d ../galdebert.github.io
+cd ../galdebert.github.io
+git add -A
+git commit -m <span style="color:#e6db74">&#34;new generated pages&#34;</span>
+git push
+cd ../blog</code></pre></div>
+<p>To also commit+push the <code>blog</code> repo and its <code>themes/galdebert-hyde</code> submodule:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd themes/galdebert-hyde
+git add -A
+git commit -m <span style="color:#e6db74">&#34;new template sources&#34;</span>
+git push
+
+cd ../..
+git add -A
+git commit -m <span style="color:#e6db74">&#34;new blog sources&#34;</span>
+git push
+
+hugo --cleanDestinationDir -d ../galdebert.github.io
+cd ../galdebert.github.io
+git add -A
+git commit -m <span style="color:#e6db74">&#34;new generated pages&#34;</span>
+git push
+
+cd ../blog</code></pre></div>
+<h1 id="a-few-tips">A few tips</h1>
+
+<ul>
+<li>Hugo extracts summaries from your posts, by brutally taking their first N words. To limit the extracted summaries, add <code>&lt;!--more--&gt;</code> where your post introduction finishes.</li>
+<li>Browser cache can be super annoying, <a href="https://superuser.com/questions/173210/how-can-i-clear-a-single-site-from-the-cache-in-firefox">this</a> was a life saver (read the 2 best answers).</li>
+<li>You should keep an eye on the terminal where you started <code>hugo server</code>, Hugo errors are logged there and can be very useful when you mess up.</li>
+</ul>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-galdebert-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-112912662-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+  </body>
+</html>
